@@ -1,0 +1,4 @@
+*** Sales Report By State , City and Country Change log ***
+
+2024-05-27 - version 1.0.0
+* Initial release of the plugin.

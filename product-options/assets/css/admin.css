@@ -1,0 +1,339 @@
+.prod_optn_metabox{
+	clear: both; 
+	width: 98%; 
+	display: flex; 
+	margin: 1%;
+}
+
+.prod_optn_metabox_heading{
+	width: 30%; 
+	margin: 1%; 
+	text-align: left; 
+	padding: 0px 10px; 
+	box-sizing: border-box;
+}
+
+.prod_optn_metabox_description{
+	width: 70%; 
+	margin: 1%; 
+	text-align: left; 
+	padding: 0px 10px; 
+	box-sizing: border-box;
+}
+
+.title_display,
+.heading_type,
+.title_font_size,
+.title_seperator,
+.field_border_pixels,
+.ck_field_title_position,
+.title_position,
+.desc_font_size,
+.tooltip_font_size{
+	width: 80%; 
+	height: 40px;
+}
+
+.span_class{
+	margin-right: 5px;
+}
+
+.title_top_left_radius,
+.title_top_right_radius,
+.title_bottom_left_radius,
+.title_bottom_right_radius,
+.title_top_padding,
+.title_bottom_padding,
+.title_left_padding,
+.title_right_padding,
+.field_border_top_left_radius,
+.field_border_top_right_radius,
+.field_border_bottom_left_radius,
+.field_border_bottom_right_radius,
+.field_border_top_padding,
+.field_border_bottom_padding,
+.field_border_left_padding,
+.field_border_right_padding{
+	width: 50%; 
+	height: 40px;
+}
+
+.expand_all_btn{
+  background: transparent; 
+  color: blue; 
+  border: none;
+}
+
+.expand_all_btn:hover{
+  cursor: pointer;
+}
+
+.close_all_btn{
+  background: transparent; 
+  color: blue; 
+  border: none;
+}
+
+.close_all_btn:hover{
+  cursor: pointer;
+}
+
+.field_dlte_btn,
+.field_add_btn,
+.csv_upload_btn,
+.csv_download_btn,
+.option_add_btn{
+	cursor: pointer;
+	background: transparent;
+	border: none;
+}
+
+.field_close_btn{
+	vertical-align: text-bottom; 
+	background: transparent; 
+	border: none;
+	cursor: pointer;
+}
+
+.field_open_btn,
+.prod_lvl_style_close_btn,
+.prod_lvl_style_open_btn{
+	vertical-align: text-bottom; 
+	background: transparent; 
+	border: none;
+	cursor: pointer;
+}
+
+.ck_field_dependable_selector,
+.field_selector,
+.option_selector{
+	height: 40px !important;
+	width: 95% !important;
+}
+
+.ck_fields_type,
+.prd_opt_ck_field_title{
+	height: 40px;
+	width: 100% !important;
+}
+
+.display_flex{
+	display: flex;
+}
+
+.expand_close_btn_div{
+	width: fit-content;
+	float: right;
+}
+
+.prod_optn_type_title_show_div{
+	width: 49%; 
+	float: left; 
+	text-align: left;
+}
+
+.prod_optn_remove_field_btn_div{
+	width: 49%; 
+	float: right; 
+	text-align: right;
+}
+
+.field_div,
+.prod_lvl_style_div{
+	padding: 10px; 
+	background: #f0f0f1; 
+	border-radius: 6px;
+}
+
+.dependent_selector_div,
+.field_selector_div,
+.option_selector_div{
+	width: 33%; 
+	text-align: center;
+}
+
+.field_type_selector_div{
+	width: 49%; 
+	float: left; 
+	margin: 5px
+}
+
+.ck_field_title_div{
+	width: 49%; 
+	float: right; 
+	margin: 5px
+}
+
+.field_desc_div{
+	width: 49%; 
+	float: left; 
+	margin: 5px
+}
+
+.desc_textarea,
+.ck_field_tool_tip{
+	width: 100%; 
+	height: 100px !important;
+}
+
+.field_tooltip_div{
+	width: 49%; 
+	float: right; 
+	margin: 5px
+}
+
+.prod_opt_req{
+	width: 100%; 
+	float: left; 
+	margin: 5px
+}
+
+.ck_field_pricing_type{
+	width: 49%; 
+	height: 40px
+}
+
+.ck_field_price{
+	width: 49%; 
+	height: 40px
+}
+
+.ck_field_min_limit,
+.ck_field_max_limit{
+	width: 48%; 
+	height: 40px
+}
+
+.ck_field_file_extention{
+	width: 99% !important; 
+	height: 40px
+}
+
+.prod_opt_options_table_main_div{
+	padding: 2px;
+}
+
+.prod_opt_table{
+	width: 100%;
+}
+
+.prod_opt_table th{
+	text-align: center; 
+	background: #ccc; 
+	color: black; 
+	padding: 10px;
+}
+
+.prod_opt_color_img_div{
+	width: 100%; 
+	display: flex; 
+	justify-content: space-between; 
+	align-items: center;
+}
+
+.prod_opt_color_div{
+	position: relative; 
+	float: right; 
+	width: fit-content;
+}
+
+.prod_opt_img_div{
+	position: relative; 
+	float: left; 
+	width: 20%
+}
+
+.prod_opt_add_img_btn{
+	background: transparent; 
+	border: none; 
+	cursor: pointer; 
+	vertical-align: middle; 
+	padding: 0;
+}
+
+.option_image{
+	width: 40px;
+  height: 100%;
+}
+
+.remove_option_image{
+	position: absolute;
+  top: -2px;
+  left: -12px;
+  background: transparent;
+  border: transparent;
+  line-height: 18px !important;
+  text-align: center;
+  cursor: pointer;
+}
+
+.prod_opt_optn_name_div{
+	position: relative; 
+	float: right; 
+	width: 80%
+}
+
+.ck_option_price_type{
+	height: 40px; 
+	width: 62% !important;
+}
+
+.ck_option_price{
+	height: 40px; 
+	width: 35% !important;
+}
+
+.ck_option_priority{
+	height: 40px; 
+	width: 100% !important;
+}
+
+.optn_remove_btn{
+	background: transparent; 
+	border: none; 
+	cursor: pointer; 
+	width: 100%;
+}
+
+.prod_opt_add_optn_btn_div{
+	width: 100%; 
+	text-align: left;
+}
+
+.prod_opt_add_field_btn_main_div{
+	padding: 10px; 
+	background: #f0f0f1; 
+	border-radius: 6px;
+}
+
+.prod_opt_add_field_btn{
+	width: 49%; 
+	float: left; 
+	text-align: left;
+}
+
+.prod_opt_csv_main_div{
+	width: 49%; 
+	float: right; 
+	text-align: right;
+}
+
+.prd_opt_csv_upload{
+	vertical-align: text-bottom !important;
+}
+
+.prod_opt_depend_main_div,
+.field_type_selector_main_div,
+.desc_tooltip_main_div,
+.prod_opt_req_main_div,
+.prod_opt_field_price_main_div,
+.prod_opt_limit_range_main_div,
+.prod_opt_file_extention_main_div,
+.prod_opt_options_table_main_div,
+.prod_optn_remove_field_btn_main_div{
+	border-bottom: 1px solid lightgray;
+}
+
+.field_div{
+	margin-top: 10px;
+}

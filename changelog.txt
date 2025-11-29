@@ -1,0 +1,4 @@
+*** Wholesale for woocommerce - B2B & B2C- B2b King - B2B For Woocommerce Change log ***
+
+2024-10-19 - version 1.0.0
+* Initial release of the plugin.
