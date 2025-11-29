@@ -1,0 +1,164 @@
+.fa {
+	cursor: pointer;
+}
+
+
+.af-rfq-checkout-wrap h2{
+	font-size: 30px;
+	line-height: 40px;
+	font-weight: 800;
+	text-align: center;
+}
+.af-rfq-rent-period, .af-rfq-checkout-form{
+	padding: 50px 0;
+	border-bottom: 1px solid #d3d3d385;
+	text-align: center;
+}
+.af-rfq-rent-period i, .af-rfq-profile-checkout i{
+	font-size: 25px;
+	color: #000;
+	margin-bottom: 8px;
+}
+.af-rfq-rent-period h3, .af-rfq-profile-checkout h3{
+	font-size: 22px;
+	line-height: 33px;
+	font-weight: 800;
+	color: #000;
+	margin-bottom: 16px;
+}
+.af-rfq-rent-period-form, .af-rfq-profile-checkout{
+	width: 100%;
+	max-width: 695px;
+	text-align: center;
+	margin: 0px auto;
+}
+.af-rfq-rent-period-form{
+	display: flex;
+	justify-content: space-between;
+}
+.af-rfq-rent-period-form input{
+	height: 45px;
+	width: 49%;
+	border-radius: 4px;
+	padding: 10px;
+	border: 1px solid #d3d3d37a;
+}
+.af-rfq-profile-mode label{
+	border: 1px solid #d3d3d37a;
+	padding: 12px;
+	display: block;
+	width: 174px;
+	font-size: 16px;
+	line-height: 26px;
+	font-weight: 700;
+	color: #000;
+	position: relative;
+}
+.af-rfq-profile-mode{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 30px;
+}
+.af-rfq-profile-mode input{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	opacity: 0;
+}
+.af-rfq-checkout-wrap .af-rfq-checkout-form input{
+	height: 48px;
+	box-shadow: none;
+	background: #fff;
+	border-radius: 4px;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #d3d3d357;
+}
+.af-rfq-checkout-wrap .af-rfq-checkout-form{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.af-rfq-checkout-wrap .af-rfq-checkout-form input.half{
+	width: 49%;
+}
+.af-rfq-checkout-wrap .af-rfq-checkout-form input.half-third{
+	width: 32%;
+}
+.af-rfq-form-wrap textarea{
+	height: 100px;
+	border-radius: 4px;
+}
+
+/*Secon tempalte*/
+.af-rfq-shipping-checkout h3{
+	font-size: 22px;
+	line-height: 33px;
+	font-weight: 800;
+	color: #000;
+	margin-bottom: 16px;
+}
+.af-rfq-shipping-checkout i{
+	font-size: 25px;
+	color: #000;
+	margin-bottom: 8px;
+}
+.af-rfq-shipping-checkout{
+	width: 100%;
+}
+.af-rfq-checkout-form .palce_quote{
+	background: #f8f504 !important;
+	border-radius: 4px !important;
+	font-size: 16px !important;
+	text-align: center !important;
+	line-height: 24px !important;
+	font-weight: 700 !important;
+	margin: 15px auto 0 !important;
+}
+.af-rfq-shipping-checkout{
+	padding-top: 40px;
+	margin-top: 40px;
+	border-top: 1px solid #d3d3d394;
+}
+.af-rfq-shipping-checkout textarea{
+	height: 200px;
+	box-shadow: none;
+	width: 100%;
+	background: #fff;
+	border-radius: 4px;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #d3d3d357;
+}
+
+.ct-rfq-add-new-product-main-div{
+	position: fixed; /* Stay in place */
+	z-index: 1000; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto!important;
+}
+
+.ct-rfq-add-new-product-content{
+	
+		background-color: lightblue;
+		width: 50%;
+		max-width: 100%;
+		min-width: 1%;
+		height: 25%;
+		min-height: 1%;
+		max-height: 100%;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		box-sizing: border-box;
+		overflow: auto!important;
+		padding: 30px;
+}
+

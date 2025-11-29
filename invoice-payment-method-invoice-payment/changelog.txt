@@ -1,0 +1,4 @@
+*** Woocommerce Invoice Payment Option And PDF Change log ***
+
+2021-08-19 - version 1.0.0
+* Initial release of the plugin.

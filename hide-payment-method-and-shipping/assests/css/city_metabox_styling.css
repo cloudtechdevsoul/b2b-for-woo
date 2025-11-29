@@ -1,0 +1,55 @@
+.af_rfd_main table{
+	width: 100%;
+}
+.af_rfd_main table td{
+  padding: 10px 0;
+}
+.af_rfd_main table td select{
+  width: 30%;
+}
+.af_rfd_main  tr td .checkbox{
+	width: 10px;
+}
+   .ct_meta_email table {
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Adjust the second value to control the spacing between rows */
+    width: 100%;
+}
+
+.ct_meta_email td {
+    border: 1px solid #ddd;
+    padding: 20px; /* Increased padding for cells */
+    text-align: left;
+}
+
+.ct_meta_email tr:nth-child(even) {
+    background-color: #f9f9f9; /* Lighter background color for even rows */
+}
+.ct_appr_dis_button{
+    margin-top: 20px;
+}
+ .ct_appr_dis_button {
+        margin-top: 20px; /* Add some top margin for spacing */
+    }
+
+    .button-primary {
+        background-color: #3498db; /* Blue color */
+        color: #fff; /* White text color */
+        padding: 10px 20px; /* Add padding for better appearance */
+        border: none; /* Remove border */
+        border-radius: 4px; /* Add rounded corners */
+        margin-right: 10px; /* Add right margin for spacing between buttons */
+        cursor: pointer;
+    }
+
+    .ct_disapprove_email_button {
+        background-color: #e74c3c; /* Red color */
+        color: #fff; /* White text color */
+        padding: 8px 10px; /* Add padding for better appearance */
+        border: none; /* Remove border */
+        border-radius: 4px; /* Add rounded corners */
+        cursor: pointer;
+    }
+    .ct_dissapprove_coloum{
+        margin-top: 10px;
+    }

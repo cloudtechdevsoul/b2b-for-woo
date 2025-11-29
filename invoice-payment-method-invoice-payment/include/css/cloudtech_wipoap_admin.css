@@ -1,0 +1,219 @@
+.ui-dialog.ui-corner-all.ui-widget{
+  z-index: 10000 !important;
+  top: 100px !important;
+}
+#custom-popup {
+  display: none;
+  z-index: 10000;
+}
+
+#custom-popup p {
+  margin-bottom: 10px;
+}
+
+#custom-popup label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#custom-popup input {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.addify-cod-settings input[type="text"], .addify-cod-settings select{
+	width: 60%;
+	margin: 1em;
+}
+
+table.addify-table-optoin {
+	width: 100%;
+	border-collapse: collapse;
+}
+tr.addify-option-field th {
+	width: 30%;
+}
+tr.addify-option-field td {
+	padding: 12.5px;
+}
+.addify-option-field th .option-head h3 {
+	text-align: left;
+	margin-left: 25px;
+}
+.addify-option-field th span.description p {
+	font-style: normal;
+	text-align: left;
+	font-weight: 100;
+}
+.addify-option-field td .addify-input-field {
+
+}
+tr.addify-option-field {
+	border-bottom: 1px solid #E7E7E7;
+}
+
+.addify-tabs{
+	width: 100%;
+	overflow:hidden;
+}
+
+.extra-fee-conditions select, .extra-fee-conditions input[type=number]{
+	width: 60%;
+}
+
+.extra-fee input[type=number]{
+	width: 60%;
+}
+
+.extra-fee-conditions .input-text-half{
+	width: 30% !important;
+	float: left;
+}
+
+.af_back_setting{
+  background-color: blue;
+  color: #000000;
+}
+.af_meta_header{
+	display: inline-block;
+  width: 100%;
+  text-align: center;
+  background-color: #0768ad;
+  color: white;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1px;
+  padding: 10px 0;
+  font-weight: 600;
+}
+.af_ip_tmp_header{
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  background-color: #0768ad;
+  color: white;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1px;
+  padding: 10px 0;
+  font-weight: 600;
+
+}
+.af_meta_section{
+	padding: 10px;
+}
+.af_ip_alert{
+	padding: 10px 0px;
+  color: red;
+}
+.af_ip_row{
+	padding: 5px 0px;
+}
+.af_ip_row span{
+	padding: 5px 0px;
+
+}
+.af_ip_label{
+	display: inline-block;
+  width: 45%;
+
+}
+.af_ip_in_value{
+	width: 50%;
+  display: inline-block;
+  text-align: right;
+  font-weight: bold;
+}
+.af_ip_row .af_ap_meta_btn{
+	margin:5px;
+}
+.af_apstemplate_images_div{
+	display: flex;
+}
+.af_ips_template{
+	padding: 0px 10px;
+}
+.input-hidden {
+  width: 160px !important;
+  height: 160px !important;
+  opacity: 0 !important;
+  border-radius: 1px !important;
+  position: absolute;
+}
+input[type=radio]:checked + div>img {
+  box-shadow: 0 0 2px 2px #0768ad;
+}
+input[type=radio]:hover + div>img {
+
+  box-shadow: 0 0 2px 2px #0768ad;
+}
+.af_credit_note_table{
+  width: 100%;
+  border-collapse: collapse;
+}
+.af_credit_note_table td{
+  border: 1px solid lightgrey;
+  padding: 3px;
+}
+.af_ips_bw_temp{
+
+  background-color: black;
+  color: #000000;
+
+}
+/*#af_ip_performa_table table thead th {
+    background-color: #0689e6eb;
+    padding: 15px;
+    color: #fff;
+    text-align: left;
+  }
+
+  #af_ip_performa_table table tr td{
+    padding: 15px;
+  }*/
+
+  #af_ip_performa_table{
+    background-color: #0689e6eb !important;
+  }
+
+  /*#af_ip_performa_table table{
+    width:100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border: 1px solid #0000000f;
+  }*/
+
+/* haris rehman start******* */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-content {
+  display: none;
+  width: 500px;
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.tooltip-container:hover .tooltip-content {
+  display: block;
+}
+
+.ka-gr-tooltip-trigger {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #666;
+  color: #fff;
+  border-radius: 50%;
+}
+/* haris rehman end****** */
