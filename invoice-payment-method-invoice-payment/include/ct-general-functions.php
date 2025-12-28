@@ -3,7 +3,7 @@
 
 function ct_ipmaip_send_invoice_pdf($order_id)
 {
-    $pdf = generate_invoice_pdf_using_order_id($order_id);
+    $pdf = cloud_tech_generate_invoice_pdf_using_order_id($order_id);
     $order_number = $order_id;
     $order = wc_get_order($order_number);
     $to = $order->get_billing_email();

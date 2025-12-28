@@ -884,7 +884,7 @@ class Cloudtech_Wipoap_Admin
 if (class_exists('Cloudtech_Wipoap_Admin')) {
 	new Cloudtech_Wipoap_Admin();
 }
-function generate_invoice_pdf_using_order_id($order_id)
+function cloud_tech_generate_invoice_pdf_using_order_id($order_id)
 {
 	$inv_date = date('Y-m-d');
 	$order_number = $order_id;

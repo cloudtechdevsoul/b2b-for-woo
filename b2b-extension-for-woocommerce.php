@@ -43,10 +43,7 @@ if (!class_exists('b2b_extension_for_woocommerce')) {
 						WC()->session->set_customer_session_cookie(true);
 					}
 				}
-
 			});
-
-
 
 			$this->afreg_global_constents_vars();
 
