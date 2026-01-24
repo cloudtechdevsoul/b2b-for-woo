@@ -3,6 +3,7 @@ if (! defined('ABSPATH') ) {
 	die;
 }
 
+
 class Ct_Olisfw_Admin {
 
 	public function __construct() {

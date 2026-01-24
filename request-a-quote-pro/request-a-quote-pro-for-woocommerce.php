@@ -189,16 +189,17 @@ if (!class_exists('Request_A_Quote_Pro_For_Woocommerce')) {
 
 			if (is_admin()) {
 
-				wp_enqueue_script('ct-tepfw', CT_RFQ_PLUGIN_URL . 'assets/js/admin.js', array('jquery'), '1.0.0', false);
+				wp_enqueue_script('ct-rfq-tepfw', CT_RFQ_PLUGIN_URL . 'assets/js/admin.js', array('jquery'), '1.0.0', false);
 				wp_enqueue_style('admin-css', CT_RFQ_PLUGIN_URL . 'assets/css/admin.css', array(), '1.0.0');
 
 			} else {
 
 				wp_enqueue_script('datatablejs', CT_RFQ_PLUGIN_URL . 'assets/js/datatablejs.js', array('jquery'), '1.0.0', false);
-				wp_enqueue_script('ct-tepfw', CT_RFQ_PLUGIN_URL . 'assets/js/front.js', array('jquery'), '1.0.0', false);
+				wp_enqueue_script('ct-rfq-tepfw', CT_RFQ_PLUGIN_URL . 'assets/js/front.js', array('jquery'), '1.0.0', true);
 				wp_enqueue_style('front-css', CT_RFQ_PLUGIN_URL . 'assets/css/front.css', array(), '1.0.0');
 
 			}
+			
 
 			wp_enqueue_script('jquery');
 
@@ -219,7 +220,7 @@ if (!class_exists('Request_A_Quote_Pro_For_Woocommerce')) {
 				'ajaxurl' => admin_url('admin-ajax.php'),
 				'nonce' => wp_create_nonce('cloud-tech-tepfw-nonce'),
 			);
-			wp_localize_script('ct-tepfw', 'ct_tepfw_var', $af_c_f_data);
+			wp_localize_script('ct-rfq-tepfw', 'ct_tepfw_var', $af_c_f_data);
 
 		}
 

@@ -248,7 +248,6 @@ function ct_rbpaqp_rbp_check_for_specific_customer_on_this_post_id($main_post_id
 }
 
 
-
 // checking for user role .
 
 

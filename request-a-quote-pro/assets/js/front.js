@@ -106,6 +106,7 @@ jQuery(document).ready( function($){
 
 	}
 
+
 	check_dependable();
 	$(document).on('click','.billing-profile , .shipping-profile',check_dependable);
 
@@ -113,57 +114,35 @@ jQuery(document).ready( function($){
 
 
 		let billing_selected_val 	= $('.billing-profile:checked').val() ? $('.billing-profile:checked').val() : 'private';
-		
+		let shipping_selected_val 	= $('.shipping-profile:checked').val() ? $('.shipping-profile:checked').val() : 'private';
+		console.log(billing_selected_val);
+		console.log(shipping_selected_val);
+
+
 		if ( 'company' == billing_selected_val ) {
 
-			$('.ct-rfq-billing-fields-with-private').each(function(){
-				$(this).hide();
-			});
-			$('.ct-rfq-billing-fields-with-company').each(function(){
-				$(this).show();
-			});
+			$('.ct-rfq-billing-fields-with-private').hide();
+			$('.ct-rfq-billing-fields-with-company').show();
 
 		}else {
 
-			$('.ct-rfq-billing-fields-with-company').each(function(){
-				$(this).hide();
-			});
-			$('.ct-rfq-billing-fields-with-private').each(function(){
-				$(this).show();
-			});
+			$('.ct-rfq-billing-fields-with-private').show();
+			$('.ct-rfq-billing-fields-with-company').hide();
 
 		}
-		$('.billing-profile').closest('label').css('background','transparent');
-
-		$('.billing-profile-'+billing_selected_val).closest('label').css('background','#FFDD44');
-
-		let shipping_selected_val 	= $('.shipping-profile:checked').val() ? $('.shipping-profile:checked').val() : 'private';
-
-
-		$('.shipping-profile').closest('label').css('background','transparent');
-
-		$('.shipping-profile-'+shipping_selected_val).closest('label').css('background','#FFDD44');
-
-		
 		if ( 'company' == shipping_selected_val ) {
 
-			$('.ct-rfq-shipping-fields-with-private').each(function(){
-				$(this).hide();
-			});
-			$('.ct-rfq-shipping-fields-with-company').each(function(){
-				$(this).show();
-			});
-
+		
+			$('.ct-rfq-shipping-fields-with-private').hide();
+			$('.ct-rfq-shipping-fields-with-company').show();
 
 		}else {
-			$('.ct-rfq-shipping-fields-with-company').each(function(){
-				$(this).hide();
-			});
-			$('.ct-rfq-shipping-fields-with-private').each(function(){
-				$(this).show();
-			});
+
+			$('.ct-rfq-shipping-fields-with-private').show();
+			$('.ct-rfq-shipping-fields-with-company').hide();
 
 		}
+	
 
 	}
 	

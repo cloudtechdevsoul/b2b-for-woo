@@ -22,7 +22,7 @@ if (!class_exists('Order_Line_Item_Status_For_Woocommerce')) {
 
 			//HOPS compatibility
 			add_action('before_woocommerce_init', array($this, 'ct_olisfw__HOPS_Compatibility'));
-			include CT_OLISFW_PLUGIN_DIR . 'includes/ct-olisfw-ajax-controller.php';
+
 			include CT_OLISFW_PLUGIN_DIR . 'includes/ct-olisfw-general-functions.php';
 
 			if (is_admin()) {
