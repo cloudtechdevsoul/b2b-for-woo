@@ -74,7 +74,6 @@ if (!class_exists('b2b_extension_for_woocommerce')) {
 			// including Sales Report.
 			include_once CT_RBPAQP_PLUGIN_DIR . 'sales-report-by-state-city-and-country/class-product-sales-report.php';
 			// product options.
-			include_once CT_RBPAQP_PLUGIN_DIR . 'product-options/class-product-options.php';
 			// create assign and delete user role.
 			include_once CT_RBPAQP_PLUGIN_DIR . 'create-assign-delete-user-role/create-assign-delete-user-role.php';
 			// Invoice Packing Slip.

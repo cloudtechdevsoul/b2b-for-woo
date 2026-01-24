@@ -16,6 +16,7 @@ function cloud_tech_rbpaqpfw_show_pricing_table()
 		$all_rule_id_and_detail_on_customer_base = array_merge($all_rule_id_and_detail_on_customer_base, $all_rule_id_and_detail_on_role_base);
 
 		$all_rule_id_and_detail_on_customer_base = ct_b2b_custom_array_filter($all_rule_id_and_detail_on_customer_base);
+
 		?>
 		<h3>
 			<?php echo esc_attr(get_option('ct_rbpaqp_set_role_pricing_on_title')); ?>
@@ -118,7 +119,7 @@ function ct_rbpaqp_rbp_check_for_specific_customer($is_prod_matching, $current_p
 				$is_any_customer_base_pricing = (array) ct_rbpaqp_rbp_check_for_specific_customer_on_this_post_id($current_post_id, $is_prod_matching);
 				if (count($is_any_customer_base_pricing) >= 1) {
 					$all_cutomers_pricing_detail = array_merge($all_cutomers_pricing_detail, $is_any_customer_base_pricing);
-					break;
+					// break;
 				}
 
 			}
@@ -247,7 +248,6 @@ function ct_rbpaqp_rbp_check_for_specific_customer_on_this_post_id($main_post_id
 }
 
 
-
 // checking for user role .
 
 
@@ -280,7 +280,7 @@ function ct_rbpaqp_rbp_check_for_specific_user_role($is_prod_matching, $current_
 				$is_any_customer_base_pricing = (array) ct_rbpaqp_rbp_check_for_specific_user_role_on_this_post_id($current_post_id, $is_prod_matching, $current_product_qty);
 				if (count($is_any_customer_base_pricing) >= 1) {
 					$all_cutomers_pricing_detail = array_merge($all_cutomers_pricing_detail, $is_any_customer_base_pricing);
-					break;
+					// break;
 				}
 
 			}
@@ -356,6 +356,7 @@ function ct_rbpaqp_rbp_check_for_specific_user_role_on_this_post_id($main_post_i
 
 	$current_day = strtolower(gmdate('l'));
 
+
 	foreach ($all_post_id as $current_post_id) {
 
 
@@ -373,17 +374,22 @@ function ct_rbpaqp_rbp_check_for_specific_user_role_on_this_post_id($main_post_i
 		if ($current_date < $start_date || $end_date > $current_date) {
 			continue;
 		}
-		if ($current_product_qty < $discount_min || $current_product_qty > $discount_max) {
+		if ( ! is_single() && ($current_product_qty < $discount_min || $current_product_qty > $discount_max)) {
+
 			continue;
 		}
 
 		if (!in_array(strtolower($current_day), $inlcuded_days)) {
+			// echo '<br> current_day';
+
 			continue;
 		}
 
 		if (empty($discount_value)) {
+			// echo '<br> discount_value';
 			continue;
 		}
+		// echo '<br> new ->>>>> current_post_id ==>'.$current_post_id;
 
 		if ('do_not_apply_if_sale_price_exsist' == $discount_on) {
 			if (!$product) {
@@ -400,117 +406,125 @@ function ct_rbpaqp_rbp_check_for_specific_user_role_on_this_post_id($main_post_i
 		}
 		$qty_and_price_array[$current_post_id] = $current_post_id;
 	}
+
 	return $qty_and_price_array;
 }
 
 
 // Regular Price Hook
-add_filter('woocommerce_product_variation_get_price', 'cloud_tech_rbpaqpfw_wholeseller_regular_price', 10, 2);
+add_filter('woocommerce_get_price_html', 'qamar_role_discount_price_html', 10, 2);
+function qamar_role_discount_price_html($price_html, $product) {
 
-add_filter('woocommerce_product_get_price', 'cloud_tech_rbpaqpfw_wholeseller_regular_price', 10, 2);
-function cloud_tech_rbpaqpfw_wholeseller_regular_price($price, $product)
-{
+    if (!$product || ! $product instanceof WC_Product) {
+        return $price_html;
+    }
 
-	$product_price = $price;
+    $product_price = $product->get_regular_price();
+    $sale_price    = $product->get_sale_price();
 
+    // Base price to apply discount on
+    $base_price = $sale_price ? $sale_price : $product_price;
 
-	if (is_cart()) {
-		global $woocommerce;
-		$cart_items = $woocommerce->cart->get_cart();
+    $all_rule_id_and_detail_on_customer_base = (array) ct_rbpaqp_rbp_check_for_specific_customer($product->get_id());
+    $all_rule_id_and_detail_on_role_base     = (array) ct_rbpaqp_rbp_check_for_specific_user_role($product->get_id());
 
-		foreach ($cart_items as $item) {
+    $check_role_base_pricing_is_available = ct_b2b_custom_array_filter(
+        array_merge($all_rule_id_and_detail_on_customer_base, $all_rule_id_and_detail_on_role_base)
+    );
 
-			$product_or_variation_id = isset($item['variation_id']) && $item['variation_id'] >= 1 ? $item['variation_id'] : $item['product_id'];
+    if (empty($check_role_base_pricing_is_available)) {
+        return $price_html;
+    }
 
-			if ($product_or_variation_id == $product->get_id()) {
+    foreach ($check_role_base_pricing_is_available as $current_post_id) {
 
-				$quantity = isset($item['quantity']) && $item['quantity'] >= 1 ? $item['quantity'] : 1;
+        $discount_on    = get_post_meta($current_post_id, 'ct_role_base_pricing_discount_on', true);
+        $discount_type   = get_post_meta($current_post_id, 'ct_role_base_pricing_discount_type', true);
+        $discount_value  = (float) get_post_meta($current_post_id, 'ct_role_base_pricing_discount_value', true);
 
-				$all_rule_id_and_detail_on_customer_base = (array) ct_rbpaqp_rbp_check_for_specific_customer($product->get_id(), $quantity);
-				$all_rule_id_and_detail_on_role_base = (array) ct_rbpaqp_rbp_check_for_specific_user_role($product->get_id(), $quantity);
-				$check_role_base_pricing_is_available = array_merge($all_rule_id_and_detail_on_customer_base, $all_rule_id_and_detail_on_role_base);
+        if ($discount_value <= 0) {
+            continue;
+        }
 
+        // Skip invalid discount context
+        if ('regular_price' === $discount_on && $product->is_on_sale() && $sale_price) {
+            continue;
+        }
 
-				$check_role_base_pricing_is_available = ct_b2b_custom_array_filter($check_role_base_pricing_is_available);
+        if ('sale_price' === $discount_on && (!$product->is_on_sale() || !$sale_price)) {
+            continue;
+        }
 
-				foreach ($check_role_base_pricing_is_available as $current_post_id) {
+        // Calculate discounted price
+        $new_price = cloud_tech_rbpaqpfw_get_discount_from_current_rule($base_price, $current_post_id);
 
-					$discount_on = get_post_meta($current_post_id, 'ct_role_base_pricing_discount_on', true);
-					$discount_type = get_post_meta($current_post_id, 'ct_role_base_pricing_discount_type', true);
-					$discount_value = (float) get_post_meta($current_post_id, 'ct_role_base_pricing_discount_value', true);
+        if ($new_price && $new_price < $base_price) {
+            // Format original and discounted price
+            $formatted_original = wc_price($base_price);
+            $formatted_discounted = wc_price($new_price);
 
-					if ('regular_price' == $discount_on && $product->is_on_sale() && !empty($product->get_sale_price())) {
-						continue;
-					}
+            // Return HTML with <del> for original and <ins> for discounted
+            $price_html = '<del>' . $formatted_original . '</del> <ins>' . $formatted_discounted . '</ins>';
+        }
 
-					if ('sale_price' == $discount_on && (!$product->is_on_sale() || !empty($product->get_sale_price()))) {
-						continue;
-					}
+        break; // stop after first valid rule
+    }
 
-					if (empty($discount_value) || $discount_value <= 0.1) {
-						continue;
-					}
+    return $price_html;
+}
 
-					$new_product_price = cloud_tech_rbpaqpfw_get_discount_from_current_rule($product_price, $current_post_id);
-					$price = $new_product_price;
+add_filter('woocommerce_get_cart_item_from_session', 'cloud_tech_rbpaqpfw_get_cart_item_from_session', 1, 2);
+function cloud_tech_rbpaqpfw_get_cart_item_from_session( $cart_item, $values ) {
 
-					break;
-				}
-			}
+	$item = $cart_item;
+	$product_or_variation_id = isset($item['variation_id']) && $item['variation_id'] >= 1 ? $item['variation_id'] : $item['product_id'];
+
+	$product =  wc_get_product($product_or_variation_id );
+
+	$quantity = isset($item['quantity']) && $item['quantity'] >= 1 ? $item['quantity'] : 1;
+
+	$all_rule_id_and_detail_on_customer_base 	= 	(array) ct_rbpaqp_rbp_check_for_specific_customer($product->get_id(), $quantity);
+	$all_rule_id_and_detail_on_role_base 		=	(array) ct_rbpaqp_rbp_check_for_specific_user_role($product->get_id(), $quantity);
+	$check_role_base_pricing_is_available 		= 	array_merge($all_rule_id_and_detail_on_customer_base, $all_rule_id_and_detail_on_role_base);
+	$check_role_base_pricing_is_available 		= 	ct_b2b_custom_array_filter($check_role_base_pricing_is_available);
+
+	foreach ($check_role_base_pricing_is_available as $current_post_id) {
+
+		$discount_on = get_post_meta($current_post_id, 'ct_role_base_pricing_discount_on', true);
+		$discount_type = get_post_meta($current_post_id, 'ct_role_base_pricing_discount_type', true);
+		$discount_value = (float) get_post_meta($current_post_id, 'ct_role_base_pricing_discount_value', true);
+
+		if ('regular_price' == $discount_on && $product->is_on_sale() && !empty($product->get_sale_price())) {
+			continue;
 		}
-	} else {
 
-
-		$all_rule_id_and_detail_on_customer_base = (array) ct_rbpaqp_rbp_check_for_specific_customer($product->get_id());
-		$all_rule_id_and_detail_on_role_base = (array) ct_rbpaqp_rbp_check_for_specific_user_role($product->get_id());
-		$check_role_base_pricing_is_available = array_merge($all_rule_id_and_detail_on_customer_base, $all_rule_id_and_detail_on_role_base);
-
-		$check_role_base_pricing_is_available = ct_b2b_custom_array_filter($check_role_base_pricing_is_available);
-
-		foreach ($check_role_base_pricing_is_available as $current_post_id) {
-
-			$discount_on = get_post_meta($current_post_id, 'ct_role_base_pricing_discount_on', true);
-			$discount_type = get_post_meta($current_post_id, 'ct_role_base_pricing_discount_type', true);
-			$discount_value = (float) get_post_meta($current_post_id, 'ct_role_base_pricing_discount_value', true);
-
-			if ('regular_price' == $discount_on && $product->is_on_sale() && !empty($product->get_sale_price())) {
-				continue;
-			}
-
-			if ('sale_price' == $discount_on && (!$product->is_on_sale() || !empty($product->get_sale_price()))) {
-				continue;
-			}
-
-			if (empty($discount_value) || $discount_value <= 0.1) {
-				continue;
-			}
-
-			$new_product_price = cloud_tech_rbpaqpfw_get_discount_from_current_rule($product_price, $current_post_id);
-			$price = $new_product_price;
-
-			if ('both_regular_and_sale_price' == $discount_on && $product->is_on_sale() && !empty($product->get_sale_price())) {
-
-				$regular_price = cloud_tech_rbpaqpfw_get_discount_from_current_rule($product->get_regular_price(), $current_post_id);
-				$product->set_regular_price($regular_price);
-
-			}
-
-
-			break;
+		if ('sale_price' == $discount_on && (!$product->is_on_sale() || !empty($product->get_sale_price()))) {
+			continue;
 		}
+
+		if (empty($discount_value) || $discount_value <= 0.1) {
+			continue;
+		}
+
+		$new_product_price = cloud_tech_rbpaqpfw_get_discount_from_current_rule($product->get_price() * $quantity, $current_post_id);
+		$price = $new_product_price;
+		$cart_item['data']->set_price($price/$quantity);
+
+		break;
 	}
 
-
-
-	return $price;
+	return $cart_item;
 }
 
 
 function cloud_tech_rbpaqpfw_get_discount_from_current_rule($product_price, $current_post_id)
 {
-	$discount_on = get_post_meta($current_post_id, 'ct_role_base_pricing_discount_on', true);
-	$discount_type = get_post_meta($current_post_id, 'ct_role_base_pricing_discount_type', true);
-	$discount_value = (float) get_post_meta($current_post_id, 'ct_role_base_pricing_discount_value', true);
+
+	$discount_on 		= 	get_post_meta($current_post_id, 'ct_role_base_pricing_discount_on', true);
+	$discount_type 		= 	get_post_meta($current_post_id, 'ct_role_base_pricing_discount_type', true);
+	$discount_value 	= 	(float) get_post_meta($current_post_id, 'ct_role_base_pricing_discount_value', true);
+	$product_price 		= 	(float) $product_price;
+
 	if ('fix_price' == $discount_type) {
 		$product_price = $discount_value;
 	}
@@ -523,15 +537,13 @@ function cloud_tech_rbpaqpfw_get_discount_from_current_rule($product_price, $cur
 
 	}
 	if ('percentage_increase' == $discount_type) {
-
 		$product_price += ($discount_value / 100) * $product_price;
-
 	}
 
 	if ('percentage_decrease' == $discount_type) {
 		$product_price -= ($discount_value / 100) * $product_price;
 	}
 
-
 	return $product_price;
+
 }

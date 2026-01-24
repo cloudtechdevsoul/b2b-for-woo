@@ -1,4 +1,0 @@
-*** WooCommerce Product Options ***
-
-2023-01-15 - version 1.0.0
-* Initial release of the plugin.
